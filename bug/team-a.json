@@ -1,0 +1,26 @@
+{
+    "apiVersion": "argoproj.io/v1alpha1",
+    "kind": "Application",
+    "metadata": {
+        "labels": {
+            "name": "app-a"
+        },
+        "name": "app-a",
+        "namespace": "argocd-shared-services"
+    },
+    "spec": {
+        "destination": {
+            "namespace": "app-a",
+            "server": "https://vccapi-test2-emea-8a6a1d23.hcp.westeurope.azmk8s.io:443"
+        },
+        "project": "app-a",
+        "source": {
+            "path": "argocd-debug/app-a",
+            "repoURL": "git@github.com:volvo-cars/ccdp-applications-state.git",
+            "targetRevision": "HEAD"
+        },
+        "syncPolicy": {
+            "automated": {}
+        }
+    }
+}

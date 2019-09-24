@@ -1,0 +1,29 @@
+{
+    "apiVersion": "argoproj.io/v1alpha1",
+    "kind": "AppProject",
+    "metadata": {
+        "labels": {
+            "name": "helloworld"
+        },
+        "name": "helloworld",
+        "namespace": "argocd-team-a"
+    },
+    "spec": {
+        "clusterResourceWhitelist": [
+            {
+                "group": "*",
+                "kind": "*"
+            }
+        ],
+        "description": "helloworld",
+        "destinations": [
+            {
+                "namespace": "helloworld-team-a",
+                "server": "https://kubernetes.default.svc"
+            }
+        ],
+        "sourceRepos": [
+            "git@github.com:iremmats/argocd-example-apps.git"
+        ]
+    }
+}

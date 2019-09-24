@@ -1,0 +1,26 @@
+{
+    "apiVersion": "argoproj.io/v1alpha1",
+    "kind": "Application",
+    "metadata": {
+        "labels": {
+            "name": "helloworld"
+        },
+        "name": "helloworld",
+        "namespace": "argocd-team-b"
+    },
+    "spec": {
+        "destination": {
+            "namespace": "helloworld-team-b",
+            "server": "https://kubernetes.default.svc"
+        },
+        "project": "helloworld",
+        "source": {
+            "path": "bug/helloworld-team-b",
+            "repoURL": "git@github.com:iremmats/argocd-example-apps.git",
+            "targetRevision": "HEAD"
+        },
+        "syncPolicy": {
+            "automated": {}
+        }
+    }
+}
